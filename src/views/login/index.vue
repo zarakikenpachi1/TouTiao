@@ -80,7 +80,7 @@ export default {
         } = await login(this.mobile, this.code)
         this.$store.commit('SET_TOKEN', token)
         // 跳转到profile页面
-        this.$router.push('/profile')
+        this.$router.push('/my')
         this.$toast.success('登录成功')
         // console.log(data)
         // console.log('submit', values)
