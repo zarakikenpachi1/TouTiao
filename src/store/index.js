@@ -1,33 +1,35 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { setToken, getToken } from '@/utils/auth'
+// import storage from '@/utils/storage'
+import { getToken, setToken } from '@/utils/auth'
 
 Vue.use(Vuex)
-// vuex本质就是一个仓库，用来存储数据
-// vuex的数据是响应式的
-// 如何修改vuex的数据:
-// Vuex的数据是自产自销的，数据修改必须在vuex里修改
-// mutations定义方法去修改，在外界调用这个方法
-// mutations方法 建议是大写
-// mutations方法可以接受到两个参数，一个是state一个是payload
-// $store.commit('方法名字')
 
 export default new Vuex.Store({
   state: {
-    // JSON.parse(localStorage.getItem('HEIMA_TOUTIAO_TOUKEN')) || {}
-    tokenObject: getToken() || {}
+    // num: 0
+    // JSON.parse(localStorage.getItem('TOUTIAO_TOKEN'))
+    //  storage.get('TOUTIAO_TOKEN')
+    tokenObj: getToken() || {}
   },
   getters: {},
   mutations: {
-    SET_TOKEN(state, payload) {
-      state.tokenObject = payload
-      // token存入本地存储中
-      // 本地存储 操作需要用json格式字符串
-      // localStorage.setItem('HEIMA_TOUTIAO_TOUKEN', JSON.stringify(payload))
-      // storage.set('HEIMA_TOUTIAO_TOUKEN', payload)
-      setToken(payload)
+    // 方法名大写,state是上面的state(参数1),payLoad(参数2)外部传过来的实参
+    // SET_NUM(state, payLoad) {
+    //   state.num += payLoad
+    // }
+    // 存储token
+    SET_TOKEN(state, payLoad) {
+      state.tokenObj = payLoad // 将token存在vuex里
+      // 将token存在本地存储中，防止页面刷新丢失
+      // localStorage.setItem('TOUTIAO_TOKEN', JSON.stringify(payLoad))
+      // storage.set('TOUTIAO_TOKEN', payLoad)
+      setToken(payLoad)
     }
   },
   actions: {},
   modules: {}
 })
+// vuex的数据必须在vuex里修改
+// mutations定义方法去修改，在外调用这个方法
+// $store.commit('方法名')用于触发 mutations里的方法

@@ -1,9 +1,11 @@
 <template>
   <div>
+    <!-- 二级路由 -->
     <router-view></router-view>
+    <!-- 底部导航 -->
     <van-tabbar route>
       <van-tabbar-item
-        v-for="(item, index) in tabbarItem"
+        v-for="(item, index) in tabbarData"
         :key="index"
         :to="item.to"
       >
@@ -18,9 +20,10 @@
 
 <script>
 export default {
+  name: 'Layout',
   data() {
     return {
-      tabbarItem: [
+      tabbarData: [
         {
           to: '/ ',
           icon: 'toutiao-shouye1',
@@ -51,8 +54,8 @@ export default {
 :deep(.van-tabbar-item__icon) {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-evenly;
+  align-items: center;
   height: 100%;
   font-size: 30px;
   .toutiao {

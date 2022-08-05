@@ -1,10 +1,11 @@
-// 封装本地存储
-// 用class 特性：封装 继承 多态
+// 封装localstorage
+// class类的特性 封装 继承 多态
 class Storage {
   get(key) {
+    // localStorage.getItem('key')
     const value = localStorage.getItem(key)
-    // JSON.parse的方法只能转化json字符串
-    // 用try catch的方法判断如果是json字符串就json.parse转化一下，否则就直接return返回
+    // JSON.parse只能转换JSON格式的字符串
+    // 如果是JSON格式的字符串就进行转换，如果不是就直接return
     try {
       return JSON.parse(value)
     } catch {
@@ -23,4 +24,5 @@ class Storage {
     localStorage.removeItem(key)
   }
 }
+
 export default new Storage()

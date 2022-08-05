@@ -1,8 +1,9 @@
-// 封装key值，避免在token中把名字打错
 import storage from './storage'
-const TOKEN = 'HEIMA_TOUTIAO_TOUKEN'
-export const setToken = (value) => storage.set(TOKEN, value)
+// 封装，防止token名字打错
+const token = 'TOUTIAO_TOKEN'
 
-export const getToken = () => storage.get(TOKEN)
+export const getToken = () => storage.get(token)
 
-export const removeToken = () => storage.remove(TOKEN)
+export const setToken = (value) => storage.set(token, value)
+
+export const removeToken = () => storage.remove(token)

@@ -1,25 +1,28 @@
-import request from '@/utils/requst'
-/**
- *
- * @param {String} mobile
- * @param {String} code
- * @returns promise
- */
+import request from '@/utils/request'
 
-// axios中做了封装,POST请求 自动加了content-type a'pplaycation/json
+/**
+ * 登录API
+ * @param {String} mobile 手机号
+ * @param {String} code 验证码
+ * @returns Promise
+ */
 export const login = (mobile, code) => {
   return request({
     url: '/v1_0/authorizations',
     method: 'POST',
-    data: { mobile, code }
+    data: {
+      mobile,
+      code
+    }
   })
 }
+
 /**
- *
- * @param {String} mobile
- * @returns promise
+ * 验证码API
+ * @param {String} mobile 手机号
+ * @returns Promise
  */
-export const getCode = (mobile) => {
+export const getCodeApi = (mobile) => {
   return request({
     url: `/v1_0/sms/codes/${mobile}`
   })
