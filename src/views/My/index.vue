@@ -2,7 +2,10 @@
   <div>
     <!-- 头部区域 -->
     <header>
-      <div class="login" v-if="isShow">登录的盒子</div>
+      <div class="login" v-if="isShow">
+        登录的盒子
+        <button @click="$router.push('/user')">点击编辑</button>
+      </div>
       <div class="logout" v-else>未登录的盒子</div>
     </header>
 
@@ -18,6 +21,7 @@
 
 <script>
 export default {
+  name: 'my',
   computed: {
     isShow() {
       // 根据token
